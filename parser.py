@@ -25,3 +25,14 @@ for x in allUrls:
         doc = response.content.decode('cp1251', errors='ignore')
     illness = re.findall('title="Click to view article">(.+?)</a>',doc)
     illnesses.append(illness)
+amount = len(illnesses)
+i = 0
+while i < amount:
+    fileName = 'text' + str(i) + '.txt'
+    f = open(fileName, 'w')
+    f.write(allSymthoms[i] + '\n')
+    f.write(str(len(illnesses[i])) + '\n')
+    for x in illnesses[i]:
+        f.write(x + '\n')
+    f.close()
+    i = i + 1
